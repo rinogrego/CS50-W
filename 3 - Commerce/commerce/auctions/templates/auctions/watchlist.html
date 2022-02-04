@@ -1,0 +1,27 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+  <h2>Watchlist</h2> <br>
+  {% if user_existence %}
+    {% if user.is_authenticated and user.username == nama %}
+      <ol>
+      {% for data in Watchlist %}
+        <li>
+          Title: <a href="{% url 'listing' data.title %}"> {{ data.title }}</a> <br>
+          Owner: <a href="{% url 'profile' data.user %}"> {{ data.user }}</a> <br>
+          <a>Current Price: {{ data.price }}</a> <br>
+        </li>
+      ========================================
+      {% empty %}
+        There is no things to watch for you currently.
+      {% endfor %}
+      </ol>
+    {% else %}
+      <h4>SORRY</h4>
+      This page is not for you to see
+    {% endif %}
+  {% else %}
+    <h2>SORRY</h2>
+    User of this name ({{ nama }}) Does Not Exist.
+  {% endif %}
+{% endblock %}

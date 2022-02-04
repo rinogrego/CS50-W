@@ -1,0 +1,69 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <h2>{{ request.user.email }}</h2>
+
+    <button class="btn btn-sm btn-outline-primary" id="inbox" action="{% url 'mailbox' 'inbox' %}" method="GET">Inbox</button>
+    <button class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
+    <button class="btn btn-sm btn-outline-primary" id="sent" action="{% url 'mailbox' 'sent' %}" method="GET">Sent</button>
+    <button class="btn btn-sm btn-outline-primary" id="archived" action="{% url 'mailbox' 'archive' %}">Archived</button>
+    <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
+    <hr>
+
+    <div id="emails-view">
+    </div>
+
+    <div id="compose-view">
+        <h3>New Email</h3>
+        <form id="compose-form" action="{% url 'compose' %}" method="POST">
+            <div class="form-group">
+                From: <input disabled class="form-control" value="{{ request.user.email }}">
+            </div>
+            <div class="form-group">
+                To: <input id="compose-recipients" class="form-control">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="compose-subject" placeholder="Subject">
+            </div>
+            <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
+            <input type="submit" class="btn btn-primary"/>
+        </form>
+    </div>
+
+    <div id="emails-list">
+        <br>
+    </div>
+
+    <div id="email-content">
+        <div class="email-content-container">
+            <div class="from-container">
+                <div class="from-area">From</div>
+                <div id="from-email"></div>
+            </div>
+            <div class="recipients-container">
+                <div class="recipients-area">Recipients</div>
+                <div id="recipients-email"></div>
+            </div>
+            <div class="subject-container">
+                <div class="subject-area">Subject</div>
+                <div id="subject-email"></div>
+            </div>
+            <div class="time-stamp-container-email">
+                <div class="time-stamp-area">Timestamp</div>
+                <div id="time-stamp-email"></div>
+            </div>
+            <div class="body-container">
+                <div class="body-area">Body</div>
+                <div id="body-email"></div>
+            </div>
+        </div>
+        <br>
+        <button class="btn btn-primary" id="reply-button">Reply</button>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'mail/inbox1.js' %}"></script>
+{% endblock %}

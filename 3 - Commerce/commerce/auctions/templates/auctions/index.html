@@ -1,0 +1,33 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+
+    {% for listing in Listings %}
+        {% if listing.is_available and listing.status %}
+        <!-- TWO CONDITIONS HERE -->
+        <!-- If listing.is_available means the date is not expired yet (automatically changing) -->
+        <!-- If listing.status means the status is not (manually) closed yet -->
+        <!-- I am sure there is a better way to do this to prevent redundancy of boolean but cannot figure it out -->
+        <div class="row" style="border-bottom: 1px solid black; padding-bottom: 10px; padding-top: 5px;">
+            <div class="col-3">
+                <img src="{{ listing.image }}" class="img-fluid" alt="{{ listing.title }}"> <br>
+            </div>
+            <div class="col">
+                <a href="{% url 'listing' listing.title %}">Name : {{ listing.title }}</a> <br>
+                <a href="{% url 'profile' listing.user %}">Owner : {{ listing.user }}</a> <br>
+                <a href="{% url 'data_category' listing.category %}">Category : {{ listing.category }}</a> <br>
+                <a>Price : {{ listing.price | floatformat:2 }}</a> <br>
+                <a>End date : {{ listing.date_end }}</a> <br>
+                {% if listing.description %}
+                    <a>Description:</a> <br>
+                    <a>{{ listing.description }}</a> <br>
+                {% endif %}
+            </div>
+        </div>
+        <br>
+        {% endif %}
+    {% empty %}
+        No Listing Available
+    {% endfor %}
+{% endblock %}

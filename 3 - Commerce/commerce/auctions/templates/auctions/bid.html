@@ -1,0 +1,27 @@
+{% extends 'auctions/layout.html' %}
+
+
+{% block body %}
+ <h2>Bid item {{ barang }}</h2><br>
+  <a class="alert alert-secondary" role="alert"> Bid minimum: {{ currentBid }} </a><br><br>
+ {% if message %}
+  <br><a class="alert alert-danger" role="alert"> {{ message }} </a><br>
+ {% endif %}
+ {% if message2 %}
+  <br><a class="alert alert-warning" role="alert"> {{ message2 }} </a><br>
+ {% endif %}
+ {% if message3 %}
+  <br><a class="alert alert-warning" role="alert"> {{ message3 }} </a><br>
+ {% endif %}
+ <br>
+ <form action="{% url 'listing' barang %}" method="POST">
+   {% csrf_token %}
+   {{ bidForm.as_p }}
+   {% if not message2 %}
+    <button type="submit" class="btn btn-primary">Submit New Bid</button>
+   {% else %}
+    <button type="submit" class="btn btn-danger" disabled>Not Enough Balance</button>
+   {% endif %}
+ </form>
+
+{% endblock %}

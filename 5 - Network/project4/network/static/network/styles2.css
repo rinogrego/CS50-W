@@ -1,0 +1,79 @@
+html {
+  background: #121212;
+}
+
+.post-author a {
+  text-decoration: none;
+  color: red;
+  font-size: 20px;
+}
+
+.post-author a:focus {
+  color: darkred;
+}
+
+.like-a-tag {
+  cursor: pointer;
+}
+
+.edit-post-form-button {
+  font-size: 14px;
+}
+
+.cancel-edit-post-button {
+  font-size: 14px;
+}
+
+#followed_status_container {
+  background-color: gray;
+  color: #fbfbfb;
+  text-align: center;
+  font-size: 12px;
+  width: 100px;
+  border-radius: 10px;
+}
+
+.custom-separator {
+  height: 10px;
+  background-color:darkred;
+  /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,51,9,1) 16%, rgba(117,147,7,1) 32%, rgba(6,169,40,1) 46%, rgba(5,159,190,1) 60%, rgba(4,27,207,1) 74%, rgba(98,3,225,1) 89%, rgba(203,0,255,1) 100%); */
+}
+
+#like-button span svg:hover {
+  background-color: yellow;
+}
+
+.pagination > li > a {
+  color:red;
+  background-color: black;
+  border: red 1px solid;
+}
+
+.pagination > li > a:hover, 
+.pagination > li > a:focus {
+  outline-width: 0;
+  color: black;
+  background-color: red;
+  border: red 1px solid;
+}
+
+.pagination > li:focus {
+  border: red 1px solid;
+}
+
+.pagination > .active > a {
+  color: black !important;
+  background-color: red !important;
+  border: red 1px solid !important;
+}
+
+.pagination > .active > a:hover {
+  color: black !important;
+  background-color: red !important;
+  border: red 1px solid !important;
+}
+
+.inActiveLink {
+  pointer-events: none;
+  cursor: default;
+}

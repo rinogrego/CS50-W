@@ -1,0 +1,228 @@
+textarea {
+  min-height: 400px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#emails-list {
+  background-color: white;
+}
+
+.email {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0px 30px 30px 30px;
+  grid-template-areas:
+  "bea",
+  "email-preview";
+}
+
+.email-preview {
+  grid-area: "email-preview";
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 30px 30px 30px;
+  grid-template-areas: 
+  "from-container",
+  "subject-container",
+  "time-stamp-container";
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+#bea {
+  grid-area: "bea";
+  display: grid;
+  position: relative;
+  width: auto;
+
+  /* The concept
+  animation-name: beamove;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+  */
+}
+
+@keyframes beamove {
+  0% {
+    z-index: -48;
+    left: 0%;
+  }
+  75% {
+    left: 99%;
+  }
+  100% {
+    z-index: 2;
+    left: 99%;
+  }
+}
+
+@keyframes beamove2 {
+  0% {
+    z-index: 2;
+    left: 99%;
+  }
+  25% {
+    left: 99%;
+  }
+  100% {
+    z-index: -48;
+    left: 0%;
+  }
+}
+
+#bea>button {
+  background-color: white;
+  height: 92px;
+  width: 90px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+#bea>button:hover {
+  background-color: lightblue;
+  box-shadow: 1px 1px 1px 1px black;
+}
+
+.email-preview:hover {
+  box-shadow: 1px 1px 1px 1px gray;
+  font-size: 17px;
+}
+
+.email-preview>a {
+  text-decoration-line: none;
+  color: black;
+}
+
+.from-container {
+  grid-area: "from-container";
+  height: inherit;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-areas: "from-area from";
+  border-radius: 10px 10px 0px 0px;
+  border: 1px solid black;
+}
+
+.from-area {
+  grid-area: "from-area";
+  text-align: left;
+  padding-left: 10px;
+}
+
+.from, #from-email {
+  grid-area: "from";
+  text-align: left;
+  padding-left: 10px;
+  border-left: 1px solid black;
+}
+
+.subject-container {
+  grid-area: "subject-container";
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-areas: "subject-area subject";
+  border: 1px solid black;
+}
+
+.subject-area {
+  grid-area: "subject-area";
+  text-align: left;
+  padding-left: 10px;
+}
+
+.subject, #subject-email {
+  grid-area: "subject";
+  text-align: left;
+  padding-left: 10px;
+  border-left: 1px solid black;
+}
+
+.time-stamp-container {
+  grid-area: "time-stamp-container";
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-areas: "time-stamp-area time-stamp";
+  border-radius: 0px 0px 10px 10px;
+  border: 1px solid black;
+}
+
+.time-stamp-area {
+  grid-area: "time-stamp-area";
+  text-align: left;
+  padding-left: 10px;
+}
+
+.time-stamp, #time-stamp-email {
+  grid-area: "time-stamp";
+  text-align: left;
+  padding-left: 10px;
+  border-left: 1px solid black;
+}
+
+.email-content-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 30px 30px 30px;
+  grid-template-areas: 
+  "from-container",
+  "recipients-container",
+  "subject-container",
+  "time-stamp-container-email",
+  "body-container";
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.time-stamp-container-email {
+  grid-area: "time-stamp-container-email";
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-areas: "time-stamp-area time-stamp";
+  border: 1px solid black;
+}
+
+.recipients-container {
+  grid-area: "recipients-container";
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-areas: "recipients-area recipients";
+  border: 1px solid black;
+}
+
+.recipients-area {
+  grid-area: "recipients-area";
+  text-align: left;
+  padding-left: 10px;
+}
+
+#recipients-email {
+  grid-area: "recipients";
+  text-align: left;
+  padding-left: 10px;
+  border-left: 1px solid black;
+}
+
+.body-container {
+  grid-area: "body-container";
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-areas: "body-area body";
+  border: 1px solid black;
+}
+
+.body-area {
+  grid-area: "body-area";
+  text-align: left;
+  padding-left: 10px;
+}
+
+#body-email {
+  grid-area: "body";
+  text-align: left;
+  padding-left: 10px;
+  border-left: 1px solid black;
+}

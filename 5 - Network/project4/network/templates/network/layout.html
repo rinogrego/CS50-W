@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Social Network{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link href="{% static 'network/styles2.css' %}" rel="stylesheet">
+        {% block script %}{% endblock %}
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Network</a>
+          
+            <div>
+              <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'view_profile' user.username %}"><strong>{{ user.username }}</strong></a>
+                    </li>
+                {% endif %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index' %}">All Posts</a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'following' %}">Following</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+              </ul>
+            </div>
+          </nav>
+        
+          <div class="body">
+            <div class="network-banner"></div>
+            <div class="row-container" style="height: 500px; background-color: rgb(56, 48, 48); overflow: break-word;">
+                <div class="row body-row">
+                    <div class="col-lg-3 col-md-3 col-sm-3" style="color:white">
+                        <section class="left bg-dark">
+                            LEFT
+                        </section>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6" style="color:white; background-color: darkred;">
+                        <section class="mid" style="background-color: #121212;">
+                            {% block body %}
+                            {% endblock %}
+                        </section>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3" style="color:white">
+                        <section class="right bg-success">
+                            RIGHT
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

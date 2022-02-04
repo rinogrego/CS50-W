@@ -1,0 +1,23 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+
+  <h2>Category: "{{ Category }}"</h2>
+  <br>
+
+  {% for listing in Listings %}
+    {% if listing.category == Category and listing.status == True and listing.is_available %}
+        <img src="{{ listing.image }}" class="img-fluid" alt="{{ listing.title }}"> <br>
+        <a href="{% url 'listing' listing.title %}">Name : {{ listing.title }}</a> <br>
+        <a href="{% url 'profile' listing.user %}">Owner : {{ listing.user }}</a> <br>
+        <a href="{% url 'data_category' listing.category %}">Category : {{ listing.category }}</a> <br>
+        <a>Price : {{ listing.price | floatformat:2 }}</a> <br>
+        =========================================== <br>
+    {% endif %}
+  {% empty %}
+        No Listing Available
+  {% endfor %}
+
+
+
+{% endblock %}

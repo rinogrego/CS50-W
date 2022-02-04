@@ -1,0 +1,18 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+ 
+<div class="row" style="margin-top:40px">  
+  <div class="col-3">
+    <img src="{{ User.image }}" alt="{{ User.username }}" class="img-fluid" height="200" width="200" style="border-radius: 200px; margin-left:40px;"> <br>
+  </div>
+  <div class="col">
+    Name: {{ User.username }} <br>
+    E-mail: {{ User.email }} <br>
+    {% if user.is_authenticated and user.username == User.username %}
+      Balance: {{ User.balance }} <br>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

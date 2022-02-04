@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+{% load static %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1 style="text-align: center;">All Pages</h1>
+    <div id="judul" style="border: 1px solid rgb(136, 121, 121);">
+        <h3 style="padding: 10px;">Daftar Entri</h3>
+    </div>
+    <ul style="list-style: none; margin-left: -10px; width: 90%">
+        {% for entry in entries %}
+            <li>
+                <div style="border: 1px solid gray;">
+                    <a href="{% url 'title' entry %}">
+                        {{ entry }}
+                    </a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

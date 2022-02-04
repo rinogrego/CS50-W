@@ -1,0 +1,13 @@
+{% extends 'encyclopedia/layout.html' %}
+
+{% block title %}
+  Encyclopedia
+{% endblock %}
+
+{% block body %}
+
+  <h1> ERROR. PAGE/ENTRY NOT FOUND </h1>
+  <a>You can create a new entry</a> <br>
+  <a href="{% url 'newEntry' %}">Click Here!</a>
+
+{% endblock %}

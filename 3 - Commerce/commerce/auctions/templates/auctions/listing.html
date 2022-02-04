@@ -1,0 +1,145 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+  <h1>{{ Listing.title }}</h1><br>
+  
+  <div class="container">
+    
+    <div class="row" >
+      <div class="col-5">
+        <a href="{{ Listing.image }}">
+          <img src="{{ Listing.image }}" class="img-fluid" alt="{{ Listing.title }}" height="300" width="300">
+        </a><br>
+      </div>
+
+      <div class="col">
+        <a>Name: {{ Listing.title }}</a> <br>
+        <a>Owner: {{ Listing.user }}</a> <br>
+        <a>Date Posted: {{ Listing.date_posted }}</a> <br>
+        <a>Description: {{ Listing.description }}</a> <br>
+        <a>Price: {{ Listing.price | floatformat:2 }}</a> <br>
+        <a>Latest Bidder: 
+          {% if bid_data.user %}
+            {{ bid_data.user }}
+          {% else %}
+            None
+          {% endif %}
+        </a> <br>
+        <a>Latest Bid Time: 
+          {% if bid_data.date_made %}
+            {{ bid_data.date_made }}
+          {% else %}
+            No date
+          {% endif %}
+        </a> <br>
+        <a>Bidding Available until: 
+          {% if Listing.is_available and Listing.status %}
+            {% if Listing.date_end %}
+              {{ Listing.date_end }}
+            {% elif Listing.date_end == Listing.date_now %}
+              TODAY!
+            {% else %}
+              No specified date
+            {% endif %}
+          {% else %}
+            <strong>BIDDING CLOSED.</strong>
+          {% endif %}
+        </a> <br>
+        {% if not Listing.is_available or not Listing.status %}
+          <a> <strong> THE AUCTION FOR THIS LISTING HAS CLOSED! </strong> </a> <br>
+          {% if bid_data.user %}
+            {% if bid_win_status %}
+              <a> <strong> WINNER: YOU </strong> </a> <br>
+            {% else %}
+              <a> <strong> WINNER: {{ bid_data.user }} </strong> </a> <br>
+            {% endif %}
+          {% else %}
+              <a> <strong> WINNER: NONE </strong> </a> <br>
+          {% endif %}
+        {% else %}
+          {% if owner_listing_status %}
+            <a> <strong> Status: Still Available. </strong> </a>
+          {% else %}
+            <a> <strong> Status: Still Available. Quick! Place your Bid! </strong> </a>
+          {% endif %}
+        {% endif %}
+
+        <br><br>
+
+        <div class="row">
+          <div class="col-md-1">
+            {% if user.is_authenticated and Listing.status and Listing.is_available %}
+              {% if owner_listing_status %}
+                <form action="{% url 'listing' Listing.title %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-success">Close</button>
+                </form>
+              {% else %}
+                <a class="btn btn-success" href="{% url 'bid' Listing.title %}" role="button">Bid</a>
+              {% endif %}
+            {% endif %}
+          </div>
+            <!-- REDUNDANCY BUT I DON'T CARE ATM SORRY -->
+          <div class="col-md">
+            {% if user.is_authenticated and Listing.status and Listing.is_available and not owner_listing_status %}
+              {% if user not in listing_watchlist %}
+                <form action="{% url 'add_watchlist' Listing.title %}">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-primary">Add to Watchlist</button>
+                </form>
+              {% else %}
+                <form action="{% url 'remove_watchlist' Listing.title %}">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-danger">Remove from Watchlist</button>
+                </form>
+             {% endif %}
+           {% endif %}
+          </div>
+        </div>
+
+      </div> <!-- SECOND COLUMN -->
+
+    </div> <!-- ROW -->
+  </div> <!-- CONTAINER -->
+
+  <br><br><br>
+
+  <h3>KOMENTAR</h3>
+
+  <br><br>
+
+  {% for comment in Comments %}
+    <div class="row" style="border: 1px solid black; border-bottom: none;">
+      <div class="col-sm-1">
+        <img src="{{ comment.user.image }}" height="75" width="75" style="border-radius: 50%;"> <br>
+      </div>
+      <div class="col-sm-11">
+        <a><strong> {{ comment.user }} - {{ comment.date_posted }} </strong></a> <br>
+        <a>{{ comment.comment }}</a>
+      </div>
+    </div>
+    <br>
+  {% endfor %}
+
+  {% if user.is_authenticated %}
+  <div class="col" style="border-top: 1px solid black;">
+    <div class="row">
+      <div class="col-sm-2">
+      </div>
+      <div class="col">
+        <br>
+        <strong>ADD A COMMENT</strong>
+        <form action="{% url 'listing' Listing.title %}" method="POST">
+          {% csrf_token %}
+          {{ commentForm.as_p }}
+          <button type="submit">Submit Comment</button>
+        </form>
+      </div>
+      <div class="col-sm-2">
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+
+{% endblock %}
