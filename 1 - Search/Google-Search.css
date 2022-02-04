@@ -1,0 +1,155 @@
+html {
+    height: 100%;
+    min-height: 100%;
+}
+
+#links {
+  display: grid;
+  grid-template-columns: 1fr 100px 170px;
+  grid-template-rows: 50px;
+  grid-template-areas: 
+  ". img-search adv-search";
+}
+#links a {
+  color: black;
+  text-decoration-line: none;
+}
+#links a:hover {
+  text-decoration-line: underline;
+}
+
+#img-search {
+  grid-area: img-search;
+  justify-self: center;
+  align-self: center;
+  font-size: 15px;
+}
+#adv-search {
+  grid-area: adv-search;
+  justify-self: center;
+  align-self: center;
+  font-size: 15px;
+}
+
+#search {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px 100px auto 180px;
+  grid-template-areas: 
+  ". logo ."
+  ". search-bar .";
+  justify-self: center;
+}
+#logo {
+  grid-area: logo;
+  justify-self: center;
+  align-self: flex-end;
+}
+#search-bar {
+  grid-area: search-bar;
+}
+#search-text input[type=text]{
+  height: 40px;
+  width: auto;
+  border: 0.5px solid rgb(214, 218, 236);
+  border-radius: 20px;
+  font-size: 16px;
+  background-repeat: no-repeat;
+  background-image: url('search-icon.png');
+  background-size: 2.5%;
+  background-position: 14px 14px;
+  background-color: white;
+  padding: 0px 20px 0 45px;
+  outline: none;
+}
+#search-text:hover {
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px gray;
+}
+#buttons {
+  grid-area: buttons;
+  text-align: center;
+}
+#button-gs, #button-ifl {
+  height: 35px;
+  width: 130px;
+  font-size: 14px;
+  color: darkslategray;
+  font-family: Arial, Helvetica, sans-serif;
+  border: none;
+  cursor: pointer;
+}
+#button-gs:hover, #button-ifl:hover {
+  border: 1px solid gray;
+}
+
+#before-links-bot {
+  display: grid;
+  grid-template-rows: 39px;
+  grid-template-columns: 105px 1fr;
+  grid-template-areas: 
+  "indonesia .";
+  background-color: rgb(240, 238, 238);
+}
+#indonesia {
+  grid-area: indonesia;
+  align-self: center;
+  justify-self: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: darkslategray;
+  font-size: 14px;
+}
+
+#links-bot {
+  display: grid;
+  grid-template-columns: 110px 75px 75px 130px 1fr 75px 60px 90px;
+  grid-template-rows: 39px;
+  grid-template-areas: 
+  "advertising business about how-search-works . privacy terms settings";
+  background-color: rgb(240, 238, 238);
+}
+#advertising {
+  grid-area: advertising;
+  justify-self: center;
+  align-self: center;
+}
+#business {
+  grid-area: business;
+  justify-self: center;
+  align-self: center;
+}
+#about {
+  grid-area: about;
+  justify-self: center;
+  align-self: center;
+}
+#how-search-works {
+  grid-area: how-search-works;
+  justify-self: center;
+  align-self: center;
+}
+#privacy {
+  grid-area: privacy;
+  justify-self: center;
+  align-self: center;
+}
+#terms {
+  grid-area: terms;
+  justify-self: center;
+  align-self: center;
+}
+#settings {
+  grid-area: settings;
+  justify-self: center;
+  align-self: center;
+}
+#advertising, #business, #about, #how-search-works, #privacy, #terms, #settings {
+  text-decoration-line: none;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  color: darkslategray;
+  font-size: 14px;
+}
+#advertising:hover, #business:hover, #about:hover, #how-search-works:hover, #privacy:hover, #terms:hover, #settings:hover {
+  text-decoration-line: underline;
+}

@@ -1,0 +1,135 @@
+html {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#gi-top {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  grid-template-rows: 50px;
+  grid-template-areas: 
+  ". gs-link";
+}
+#gs-link {
+  grid-area: gs-link;
+  justify-self: center;
+  align-self: center;
+  color: black;
+  font-size: 15px;
+  text-decoration-line: none;
+}
+#gs-link:hover {
+  text-decoration-line: underline;
+}
+
+#center {
+  display: grid;
+  grid-template-rows: 200px 100px auto 180px;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-areas: 
+  ". gi-logo ."
+  ". image-form .";
+}
+#gi-logo {
+  grid-area: gi-logo;
+  justify-self: center;
+  align-self: flex-end;
+  margin-left: 50px;
+}
+.image-form {
+  grid-area: image-form;
+  justify-self: center;
+  align-self: flex-start;
+}
+.image-form input[type=text] {
+  height: 40px;
+  width: 420px;
+  border: 0.5px solid rgb(214, 218, 236);
+  border-radius: 20px;
+  font-size: 16px;
+  background-repeat: no-repeat, no-repeat;
+  background-image: url('search-icon.png'), url('google-camera.png');
+  background-size: 2.5%, 4%;
+  background-position: 14px 12px, 475px 11px;
+  background-color: white, white;
+  padding: 0px 45px 0 45px;
+  outline: none;
+}
+.image-form input[type=text]:hover {
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px gray;
+}
+
+#indonesia-bot {
+  display: grid;
+  grid-template-rows: 39px;
+  grid-template-columns: 105px 1fr;
+  grid-template-areas: 
+  "indonesia .";
+  background-color: rgb(240, 238, 238);
+}
+#indonesia {
+  grid-area: indonesia;
+  align-self: center;
+  justify-self: center;
+  color: darkslategray;
+  font-size: 14px;
+}
+
+#bottom {
+  display: grid;
+  grid-template-columns: 110px 75px 75px 130px 1fr 75px 60px 90px;
+  grid-template-rows: 39px;
+  grid-template-areas: 
+  "advertising business about how-search-works . privacy terms settings";
+  background-color: rgb(240, 238, 238);
+}
+#advertising {
+  grid-area: advertising;
+  justify-self: center;
+  align-self: center;
+}
+#business {
+  grid-area: business;
+  justify-self: center;
+  align-self: center;
+}
+#about {
+  grid-area: about;
+  justify-self: center;
+  align-self: center;
+}
+#how-search-works {
+  grid-area: how-search-works;
+  justify-self: center;
+  align-self: center;
+}
+#privacy {
+  grid-area: privacy;
+  justify-self: center;
+  align-self: center;
+}
+#terms {
+  grid-area: terms;
+  justify-self: center;
+  align-self: center;
+}
+#settings {
+  grid-area: settings;
+  justify-self: center;
+  align-self: center;
+}
+#advertising, #business, #about, #how-search-works, #privacy, #terms, #settings {
+  text-decoration-line: none;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  color: darkslategray;
+  font-size: 14px;
+}
+#advertising:hover, #business:hover, #about:hover, #how-search-works:hover, #privacy:hover, #terms:hover, #settings:hover {
+  text-decoration-line: underline;
+}

@@ -1,0 +1,155 @@
+html {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#gas-top {
+  display: grid;
+  grid-template-columns: 125px 1fr 125px;
+  grid-template-rows: 60px;
+  grid-template-areas: 
+  "gs-top-logo . gs-link";
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-top: -8px;
+  background-color: rgb(240, 238, 238);  
+}
+#gs-top-logo {
+  grid-area: gs-top-logo;
+  background-color: rgb(240, 238, 238);
+  justify-self: center;
+  align-self: center;
+}
+#gs-link {
+  grid-area: gs-link;
+  text-decoration-line: none;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  justify-self: center;
+  align-self: center;
+}
+#gs-link:hover {
+  text-decoration-line: underline;
+}
+
+#advanced-search-area {
+  color: rgb(206, 7, 7);
+  font-size: 20px;
+  display: grid;
+  grid-template-columns: 225px 1fr;
+  grid-template-rows: 70px;
+  grid-template-areas: 
+  "advanced-search .";
+  border-bottom: rgb(240, 238, 238) solid 1px;
+}
+#advanced-search {
+  grid-area: advanced-search;
+  justify-self: center;
+  align-self: center;
+}
+
+form label {
+  font-size: 13px;
+}
+form input[type=text] {
+  border: 0.5px solid rgb(216, 215, 215);
+  height: 24px;
+  width: 570px;
+}
+form input[type=text]:focus {
+  outline: rgb(100, 181, 235) solid 0.5px;
+}
+
+#the-form {
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-template-rows: 60px auto;
+  grid-template-areas: 
+  "fpw"
+  "form-display";
+}
+.fpw {
+  grid-area: fpw;
+  justify-self: center;
+  align-self: end;
+}
+.form-display {
+  grid-area: form-display;
+  margin-left: 40px;
+  margin-top: 20px;
+}
+
+.atw, .tewop, .aotw, .notw, .adv-button {
+  display: grid;
+  grid-template-columns: 180px 575px 1fr;
+  grid-template-rows: 45px;
+}
+.atw {
+  grid-template-areas: 
+  "atw-label atw-input .";
+}
+.tewop {
+  grid-template-areas: 
+  "tewop-label tewop-input .";
+}
+.aotw {
+  grid-template-areas: 
+  "aotw-label aotw-input .";
+}
+.notw {
+  grid-template-areas: 
+  "notw-label notw-input .";
+}
+.adv-button {
+  grid-template-areas: 
+  ". advanced-button .";
+}
+.atw-label {
+  grid-area: atw-label;
+  margin-top: 5px;
+}
+.atw-input {
+  grid-area: atw-input;
+}
+.tewop-label {
+  grid-area: tewop-label;
+  margin-top: 5px;
+}
+.tewop-input {
+  grid-area: tewop-input;
+}
+.aotw-label {
+  grid-area: aotw-label;
+  margin-top: 5px;
+}
+.aotw-input {
+  grid-area: aotw-input;
+}
+.notw-label {
+  grid-area: notw-label;
+  margin-top: 5px;
+}
+.notw-input {
+  grid-area: notw-input;
+}
+#advanced-button {
+  grid-area: advanced-button;
+  background-color: rgb(1, 141, 255);
+  color: white;
+  border: none;
+  height: 30px;  
+  width: 120px;
+  font-size: 11px;
+  font-weight: bold;
+  justify-self: end;
+  outline: none;
+}
+#advanced-button:hover {
+  outline: 0px solid black;
+  background-color: rgb(1, 111, 255);
+}
